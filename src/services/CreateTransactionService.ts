@@ -15,6 +15,7 @@ class CreateTransactionService {
   }
 
   public execute({ title, value, type }: Request): Transaction {
+    const balance = this.transactionsRepository.getBalance();
     const transaction = this.transactionsRepository.create({
       value,
       type,
