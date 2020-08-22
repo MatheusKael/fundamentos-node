@@ -22,6 +22,10 @@ class CreateTransactionService {
       title,
     });
 
+    if (type === 'outcome' && value > balance.total) {
+      throw Error('Operation cound not be executed');
+    }
+
     return transaction;
   }
 }
